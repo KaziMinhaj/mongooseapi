@@ -2,12 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-const reviewModel = require("../Model/reviewModel");
-const Review = new mongoose.model("Review", reviewModel);
+const itemModel = require("../Model/itemModel");
+const Item = new mongoose.model("Item", itemModel);
 
-// GET ALL THE Review
+// GET ALL THE Item
 router.get("/", async (req, res) => {
-  await Review.find((err, data) => {
+  await Item.find((err, data) => {
       if (err) {
         res.status(500).json({
           error: "There was a server side error!",
@@ -21,9 +21,9 @@ router.get("/", async (req, res) => {
     });
 });
 
-// GET A Review by ID
+// GET A Item by ID
 router.get("/:id", async (req, res) => {
-  await Review.find({ _id: req.params.id }, (err, data) => {
+  await Item.find({ _id: req.params.id }, (err, data) => {
     if (err) {
       res.status(500).json({
         error: "There was a server side error!",
@@ -37,33 +37,33 @@ router.get("/:id", async (req, res) => {
   });
 });
 
-// POST A Review
-router.post("/addReview", async (req, res) => {
-  const newReview = new Review(req.body);
-  await newReview.save((err) => {
+// POST A Item
+router.post("/addItem", async (req, res) => {
+  const newItem = new Item(req.body);
+  await newItem.save((err) => {
     if (err) {
       res.status(500).json({
         error: "There was a server side error!",
       });
     } else {
       res.status(200).json({
-        message: "Review was inserted successfully!",
+        message: "Item was inserted successfully!",
       });
     }
   });
 });
 
 
-// DELETE Review
+// DELETE Item
 router.delete("/:id", async (req, res) => {
-  await Review.deleteOne({ _id: req.params.id }, (err) => {
+  await Item.deleteOne({ _id: req.params.id }, (err) => {
     if (err) {
       res.status(500).json({
         error: "There was a server side error!",
       });
     } else {
       res.status(200).json({
-        message: "Review was deleted successfully!",
+        message: "Item was deleted successfully!",
       });
     }
   });
