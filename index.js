@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const adminController = require("./Controller/adminController");
-const reviewController = require("./Controller/reviewController");
-const itemController = require("./Controller/itemController");
+const adminController = require("./MVC Structure/Controller/adminController");
+const reviewController = require("./MVC Structure/Controller/reviewController");
+const itemController = require("./MVC Structure/Controller/itemController");
 
 // express app initialization
 const app = express();
