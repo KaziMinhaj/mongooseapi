@@ -1,0 +1,7 @@
+.options {
+  padding: 0.01rem;
+}
+.options:hover {
+  background-color: whitesmoke;
+  border-radius: 1rem;
+}
